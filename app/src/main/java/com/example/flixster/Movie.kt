@@ -1,20 +1,35 @@
 package com.example.flixster
 
+import android.support.annotation.Keep
 import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-class Movie {
-    @SerializedName("id")
-    var id: Int? = null
+@Keep
+@Serializable
+data class Movies (
+    @SerialName("results")
+    val results: List<Movie>?
+) : java.io.Serializable
 
-    @JvmField
-    @SerializedName("title")
-    var title: String? = null
+@Keep
+@Serializable
+data class Movie (
+    @SerialName("id")
+    val id: Int?,
 
-    @JvmField
-    @SerializedName("poster_path")
-    var posterPath: String? = null
+    @SerialName("title")
+    var title: String?,
 
-    @JvmField
-    @SerializedName("overview")
-    var overview: String? = null
-}
+    @SerialName("poster_path")
+    var posterPath: String?,
+
+    @SerialName("overview")
+    var overview: String?,
+
+    @SerialName("release_date")
+    val releaseDate: String?,
+
+    @SerialName("vote_average")
+    val voteAverage: String?
+) : java.io.Serializable
